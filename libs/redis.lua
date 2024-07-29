@@ -758,7 +758,7 @@ end
 -- ############################################################################
 
 local function connect_tcp(socket, parameters)
-    local host, port = parameters.host, Fastumber(parameters.port)
+    local host, port = parameters.host, tonumber(parameters.port)  -- استبدل Fastumber بـ tonumber
     local ok, err = socket:connect(host, port)
     if not ok then
         redis.error('could not connect to '..host..':'..port..' ['..err..']')
